@@ -1,0 +1,4 @@
+connection.js contains database connection info 
+server.js contains express connection info
+\ these two will connect via different ports
+express helps programmer manage front end and backend info
