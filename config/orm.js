@@ -1,4 +1,5 @@
 var connection = require("./connection.js");
+
 var orm = {
     selectAll: function(table) {
         var queryString = "SELECT * FROM ?? ;";
@@ -9,13 +10,13 @@ var orm = {
     insertOne: function(table, colToInput, newInput) {
         var queryString = "INSERT INTO ?? (??) VALUES (?)";
         connection.query(queryString, [table, colToInput, newInput], function(err, result) {
-        	console.log(result);
+            console.log(result);
         });
     },
     updateOne: function(table, oldvalue, id, newInput) {
         var queryString = "UPDATE ?? SET ?? = ? WHERE id = ?";
         connection.query(queryString, [table, oldvalue, id, newInput], function(err, result) {
-        	console.log(result);
+            console.log(result);
         });
     }
 };
