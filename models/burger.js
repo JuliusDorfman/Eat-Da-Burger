@@ -1,9 +1,12 @@
 var orm = require("../config/orm.js");
 
+var TESTING = false;
+
 var burger = {
     all: function(cb) {
         orm.selectAll("burgers", function(res) {
             cb(res);
+            if (TESTING) { console.log("burger.js", res) }
         });
     },
     create: function(table, colToInput, newInput, cd) {

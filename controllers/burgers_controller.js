@@ -5,21 +5,23 @@ var router = express.Router();
 // Import our burger model(which contains our database functions)
 var burger = require("../models/burger.js");
 
+var TESTING = false;
 
 // creating routes and logic 
 
+// router.get will provide the entire database of pre-existing burgers
 router.get("/", function(req, res) {
-    orm.all(function(data) {
+    if (TESTING) { console.log("req, res, burgers_controller.js", res) }
+    burger.all(function(data) {
         var hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
 
 
-// app.post("/api/burgers", function(req, res) {
+// app.post("/", function(req, res) {
 //   cat.create([
 //     "name", "sleepy"
 //   ], [
@@ -48,4 +50,4 @@ router.get("/", function(req, res) {
 // });
 
 // Export routes for server.js to use.
-// module.exports = app;
+module.exports = router;
